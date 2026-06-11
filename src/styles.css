@@ -18,6 +18,13 @@ body {
   width: 100%;
   position: relative;
 }
+/* disable text selection everywhere in the carousel */
+.carousel,
+.carousel * {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
 
 /* TRACK */
 .track {
@@ -54,6 +61,7 @@ body {
   width: 340px;
   height: 460px;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .card.active {
@@ -64,7 +72,7 @@ body {
 .card.inactive {
   transform: scale(0.85);
   opacity: 0.4;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 /* INNER */
@@ -130,4 +138,27 @@ body {
 
 .bg.active {
   opacity: 1;
+}
+.pagination {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.4);
 }
