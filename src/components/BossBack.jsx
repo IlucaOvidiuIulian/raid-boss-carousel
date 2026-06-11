@@ -17,7 +17,7 @@ export default function BossBack({ boss }) {
 
       <section>
         <h3>Tactics</h3>
-        <pre>{boss.tactics}</pre>
+        <pre className="tactics">{boss.tactics}</pre>
       </section>
     </div>
   );
