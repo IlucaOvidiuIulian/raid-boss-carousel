@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import BossFront from "./BossFront";
+import BossBack from "./BossBack";
 
 export default function BossCard({ boss, active }) {
   const [flipped, setFlipped] = useState(false);
@@ -11,38 +13,15 @@ export default function BossCard({ boss, active }) {
     <div className={`card ${active ? "active" : "inactive"}`}>
       <div
         className={`card-inner ${flipped ? "flipped" : ""}`}
-        style={{
-          backgroundImage: `url(${boss.image})`,
-        }}
-        onClick={() => active && setFlipped(!flipped)}
+        style={{ backgroundImage: `url(${boss.image})` }}
+        onClick={() => active && setFlipped((f) => !f)}
       >
         <div className="card-front">
-          <div className="overlay">
-            <h2>{boss.name}</h2>
-          </div>
+          <BossFront boss={boss} />
         </div>
 
         <div className="card-back">
-          <div className="scroll">
-            <section>
-              <h3>Abilities</h3>
-              <ul>
-                {boss.abilities.map((a) => (
-                  <li key={a}>{a}</li>
-                ))}
-              </ul>
-            </section>
-
-            <section>
-              <h3>Explanation</h3>
-              <p>{boss.explanation}</p>
-            </section>
-
-            <section>
-              <h3>Tactics</h3>
-              <pre>{boss.tactics}</pre>
-            </section>
-          </div>
+          <BossBack boss={boss} />
         </div>
       </div>
     </div>

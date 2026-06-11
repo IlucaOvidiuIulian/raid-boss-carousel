@@ -24,7 +24,7 @@ export default function Carousel({ bosses, index, setIndex }) {
     }
   };
 
-  const activeIndex = index % len;
+  const activeIndex = ((index % len) + len) % len;
 
   const getCircularDirection = (from, to, len) => {
     const forward = (to - from + len) % len;
@@ -40,6 +40,7 @@ export default function Carousel({ bosses, index, setIndex }) {
       onTouchStart={onStart}
       onTouchEnd={onEnd}
     >
+      {/* Background */}
       <div className="bg-container">
         {bosses.map((b, i) => (
           <div
@@ -50,11 +51,11 @@ export default function Carousel({ bosses, index, setIndex }) {
         ))}
       </div>
 
+      {/* Track */}
       <div
         className="track"
         style={{
           transform: `translateX(calc(50vw - 170px - ${index * 360}px))`,
-          transition: "transform 0.6s ease",
         }}
       >
         {extended.map((boss, i) => {
